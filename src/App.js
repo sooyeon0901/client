@@ -30,10 +30,15 @@ function App() {
     })
     .then((res) => res.json()) // 데이터 한번 정제해 줘야 함
     .then((data) => {
-      console.log('post서버에서 받은 데이터(뷰)==', data);
-      console.log('post지갑 주소(뷰)==', data.data);
-      setCherry(data);
-      //console.log('후==', todoList);
+
+      if(data != 'undefined' && data != null){ // 랜더링 시 undefined 나오는거 해결 위함?
+
+        console.log('post/stringify서버에서 받은 데이터(뷰)==', JSON.stringify(data));
+        console.log('post서버에서 받은 데이터(뷰)==', data);
+        console.log('post지갑 주소(뷰)==', data.data);
+        setCherry(data);
+        //console.log('후==', todoList);
+      }
     });
     console.log('cherry==', cherry); // null 이 찍힘. 화면 랜더링시에 맞춰서 데이터를 불러오지 않기 때문
     //새로고침하면 잘 나옴 
